@@ -7,15 +7,14 @@ public static class VectorExtensions
 {
     public static Vector GetEyePosition(CCSPlayerController player)
     {
-        if (player.PlayerPawn?.Value is not { } pawn || pawn.CameraServices == null)
+        if (player.PlayerPawn?.Value is not { } pawn)
         {
-            throw new ArgumentException("Player pawn or camera services are not valid.");
+            throw new ArgumentException("Player pawn not valid.");
         }
 
         Vector absOrigin = pawn.AbsOrigin!;
-        float viewOffsetZ = pawn.CameraServices.OldPlayerViewOffsetZ;
 
-        return new Vector(absOrigin.X, absOrigin.Y, absOrigin.Z + viewOffsetZ);
+        return new Vector(absOrigin.X, absOrigin.Y, absOrigin.Z + pawn.ViewOffset.Z);
     }
 
     public static float CalculateDistance(Vector vector1, Vector vector2)
