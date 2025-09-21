@@ -26,7 +26,7 @@ public class Item_Gravity : IItemModule
 
         if (player.PlayerPawn?.Value is not { } playerPawn) return false;
 
-        playerPawn.GravityScale = gravityValue;
+        playerPawn.ActualGravityScale = gravityValue;
         return true;
     }
 
@@ -34,7 +34,7 @@ public class Item_Gravity : IItemModule
     {
         if (player.PlayerPawn?.Value is { } playerPawn)
         {
-            playerPawn.GravityScale = 1.0f;
+            playerPawn.ActualGravityScale = 1.0f;
         }
         return true;
     }
