@@ -113,8 +113,8 @@ public class Item_Trail : IItemModule
         QAngle angle = ParseAngle(itemdata.GetValueOrDefault("angleValue", "90 90 90"));
 
         entity.EffectName = effectName;
+        entity.Teleport(absOrigin, angle);
         entity.DispatchSpawn();
-        entity.Teleport(absOrigin, angle, new Vector());
         entity.AcceptInput(acceptinputvalue);
         entity.AcceptInput("FollowEntity", player.PlayerPawn?.Value!, player.PlayerPawn?.Value!, "!activator");
 
